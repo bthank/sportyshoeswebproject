@@ -104,17 +104,25 @@ public class ShoeOrderController {
        	shoeOrder.setDateOfOrder(new java.sql.Date(millis));
        	shoeOrder.setOrderItems(customerCart.getOrderItems());
        	 
+       	System.out.println("\n\n\n\n");
        	String orderType = "";
        	for ( OrderItem item : customerCart.getOrderItems()) {
        		String shoeType = shoeService.findById(item.getShoeId()).getShoeType();
        		if (orderType.equals("")) {
+       	       	System.out.println("In ShoeOrderController:2a  addShippingChoice()   where orderType equals blank   orderType=" + orderType);
+
        			orderType = shoeType;
-       		} else if (orderType == shoeType) {
+       		} else if (orderType.equals(shoeType)) {
+      	       	System.out.println("In ShoeOrderController:2b  addShippingChoice()   where orderType equals shoeType   orderType=" + orderType + "   shoeType=" + shoeType);
+
        			orderType = shoeType;
        		} else  {
+      	       	System.out.println("In ShoeOrderController:2c  addShippingChoice()   where orderType does not equal shoeType and setting to Multitype   orderType=|" + orderType + "|   shoeType=|" + shoeType + "|");
+
        			orderType = "Multitype";
        		}
        	}
+       	System.out.println("\n\n\n\n");
        	shoeOrder.setOrderType(orderType);
        	
        	shoeOrder.setShippingCarrier(shippingChoice.getShippingCarrier());

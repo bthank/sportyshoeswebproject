@@ -61,12 +61,7 @@ prefix="c" %>
             <th>Username</th>
             <th>Order Date</th>
             <th>Order Type</th>
-            <th>Order Item Id</th>
-            <th>Shoe Id</th>
-            <th>Shoe Name</th>
-            <th>Qty Purchased</th>
-            <th>Shoe Image</th> 
-            <th>Price</th>
+
             <th>Shipping Carrier</th>
             <th>Shipping Choice</th>
             <th>Shipped</th>
@@ -79,14 +74,7 @@ prefix="c" %>
             <td><c:out value="${shoeOrderItem.userName}" /></td>
             <td><c:out value="${shoeOrderItem.dateOfOrder}" /></td>
             <td><c:out value="${shoeOrderItem.orderType}" /></td>
-            <td><c:out value="${shoeOrderItem.orderItemId}" /></td>
-            <td><c:out value="${shoeOrderItem.shoeId}" /></td>
-            <td><c:out value="${shoeOrderItem.shoeName}" /></td>
-            <td><c:out value="${shoeOrderItem.purchaseQuantity}" /></td>
-            <td>
-                <img src="${shoeOrderItem.imageUrl}" height="200" width="200">
-            </td>
-            <td><c:out value="${shoeOrderItem.price}" /></td>
+
             <td><c:out value="${shoeOrderItem.shippingCarrier}" /></td>
             <td><c:out value="${shoeOrderItem.shippingChoice}" /></td>
             <td><c:out value="${shoeOrderItem.shipped}" /></td>

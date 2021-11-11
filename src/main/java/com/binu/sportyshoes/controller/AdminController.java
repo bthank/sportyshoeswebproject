@@ -237,6 +237,7 @@ public class AdminController {
         		searchShoeOrderItem.setShipped(shoeOrder.isShipped());
         		searchShoeOrderItem.setShippedDate(shoeOrder.getShippedDate());
         		
+  /*      	 
         	 	for (OrderItem orderItem: shoeOrder.getOrderItems()) {
         			searchShoeOrderItem.setOrderItemId(orderItem.getId());
         			searchShoeOrderItem.setShoeId(orderItem.getShoeId());
@@ -246,17 +247,14 @@ public class AdminController {
         			searchShoeOrderItem.setPrice(orderItem.getPrice());
         			
                 	System.out.println("In AdminController:4a searchShoeOrders()    searchShoeOrderItem=" +  searchShoeOrderItem);
-                	SearchShoeOrderItem newSearchShoeOrderItem = searchShoeOrderItem;
-        			listOfShoeOrderItems.add(newSearchShoeOrderItem);
-        			
-        			 
-        			
+        			listOfShoeOrderItems.add(searchShoeOrderItem);
+  
         		}
-        		 
-        		model.addAttribute("listOfShoeOrderItems", listOfShoeOrderItems);
-
-        	}
-   		
+        		*/
+        		listOfShoeOrderItems.add(searchShoeOrderItem); 
+          	}
+        	model.addAttribute("listOfShoeOrderItems", listOfShoeOrderItems);
+        	
      	} else if (dateOfOrderType.equals("Orders today")) {
      		
      	} else if (dateOfOrderType.equals("Orders Last 7 days")) {
