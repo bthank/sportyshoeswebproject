@@ -137,7 +137,7 @@ uri="http://www.springframework.org/tags/form" %>
           </div>                
           <div class="form-label-and-input">
             <span class="form-label"></span>
-            <span class="form-input"><form:button>Register</form:button></span> 
+            <span class="form-input"><form:button>Add Payment Details</form:button></span> 
           </div>           
 
         </form:form>

@@ -224,39 +224,14 @@ public class AdminController {
     	if (dateOfOrderType.equals("All Orders")) { 
     		listOfShoeOrders = shoeOrderService.findByOrderType(categoryOrderType);
         	System.out.println("In AdminController:3 searchShoeOrders()    listOfShoeOrders=" +  listOfShoeOrders);
- 
-        	for (ShoeOrder shoeOrder: listOfShoeOrders) {
-        		System.out.println("In AdminController:4 searchShoeOrders()    shoeOrder=" +  shoeOrder);
-        		SearchShoeOrderItem searchShoeOrderItem = new SearchShoeOrderItem();
-        		searchShoeOrderItem.setShoeOrderId(shoeOrder.getId());
-        		searchShoeOrderItem.setUserName(shoeOrder.getUserName());
-        		searchShoeOrderItem.setDateOfOrder(shoeOrder.getDateOfOrder());
-        		searchShoeOrderItem.setOrderType(shoeOrder.getOrderType());
-        		searchShoeOrderItem.setShippingCarrier(shoeOrder.getShippingCarrier());
-        		searchShoeOrderItem.setShippingChoice(shoeOrder.getShippingChoice());
-        		searchShoeOrderItem.setShipped(shoeOrder.isShipped());
-        		searchShoeOrderItem.setShippedDate(shoeOrder.getShippedDate());
-        		
-  /*      	 
-        	 	for (OrderItem orderItem: shoeOrder.getOrderItems()) {
-        			searchShoeOrderItem.setOrderItemId(orderItem.getId());
-        			searchShoeOrderItem.setShoeId(orderItem.getShoeId());
-        			searchShoeOrderItem.setShoeName(orderItem.getShoeName());
-        			searchShoeOrderItem.setPurchaseQuantity(orderItem.getPurchaseQuantity());
-        			searchShoeOrderItem.setImageUrl(orderItem.getImageUrl());
-        			searchShoeOrderItem.setPrice(orderItem.getPrice());
-        			
-                	System.out.println("In AdminController:4a searchShoeOrders()    searchShoeOrderItem=" +  searchShoeOrderItem);
-        			listOfShoeOrderItems.add(searchShoeOrderItem);
-  
-        		}
-        		*/
-        		listOfShoeOrderItems.add(searchShoeOrderItem); 
-          	}
-        	model.addAttribute("listOfShoeOrderItems", listOfShoeOrderItems);
-        	
+         	
      	} else if (dateOfOrderType.equals("Orders today")) {
-     		
+     		long millis=System.currentTimeMillis();
+           	Date dateOfOrder = new java.sql.Date(millis);
+           	           	
+           	listOfShoeOrders = shoeOrderService.findByDateOfOrderAndOrderType(dateOfOrder, categoryOrderType);
+        	System.out.println("In AdminController:4a searchShoeOrders()    listOfShoeOrders=" +  listOfShoeOrders);
+           	
      	} else if (dateOfOrderType.equals("Orders Last 7 days")) {
      		
      	} else if (dateOfOrderType.equals("Orders Last 2 weeks")) {
@@ -266,6 +241,22 @@ public class AdminController {
      	} else if (dateOfOrderType.equals("Orders This Year")) {
      		
      	}
+    	
+    	for (ShoeOrder shoeOrder: listOfShoeOrders) {
+    		System.out.println("In AdminController:3a searchShoeOrders()    shoeOrder=" +  shoeOrder);
+    		SearchShoeOrderItem searchShoeOrderItem = new SearchShoeOrderItem();
+    		searchShoeOrderItem.setShoeOrderId(shoeOrder.getId());
+    		searchShoeOrderItem.setUserName(shoeOrder.getUserName());
+    		searchShoeOrderItem.setDateOfOrder(shoeOrder.getDateOfOrder());
+    		searchShoeOrderItem.setOrderType(shoeOrder.getOrderType());
+    		searchShoeOrderItem.setShippingCarrier(shoeOrder.getShippingCarrier());
+    		searchShoeOrderItem.setShippingChoice(shoeOrder.getShippingChoice());
+    		searchShoeOrderItem.setShipped(shoeOrder.isShipped());
+    		searchShoeOrderItem.setShippedDate(shoeOrder.getShippedDate());
+    		
+    		listOfShoeOrderItems.add(searchShoeOrderItem); 
+      	}
+    	model.addAttribute("listOfShoeOrderItems", listOfShoeOrderItems);
     		
     	System.out.println("In AdminController:99 searchShoeOrders()    listOfShoeOrderItems=" +  listOfShoeOrderItems);
     	return "admin/admin-search-shoe-orders-result-page";

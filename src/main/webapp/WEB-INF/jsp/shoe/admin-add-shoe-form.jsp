@@ -115,7 +115,7 @@ uri="http://www.springframework.org/tags/form" %>
           <form:label path="imageUrl">Image Url:</form:label>
           <form:input path="imageUrl" /><br /><br />
 
-          <form:button>Register</form:button>
+          <form:button>Add Shoe</form:button>
         </form:form>
       </div>
     </center>

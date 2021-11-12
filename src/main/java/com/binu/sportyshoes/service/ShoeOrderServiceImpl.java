@@ -1,5 +1,6 @@
 package com.binu.sportyshoes.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -39,6 +40,18 @@ public class ShoeOrderServiceImpl implements ShoeOrderService {
 	@Override
 	public List<ShoeOrder> findByOrderType(String orderType) {
 		List<ShoeOrder> listOfShoeOrders = shoeOrderRepository.findByOrderType(orderType);
+		return listOfShoeOrders;
+	}
+
+	@Override
+	public List<ShoeOrder> findByDateOfOrder(Date orderDate) {
+		List<ShoeOrder> listOfShoeOrders = shoeOrderRepository.findByDateOfOrder(orderDate);
+		return listOfShoeOrders;
+	}
+
+	@Override
+	public List<ShoeOrder> findByDateOfOrderAndOrderType(Date orderDate, String orderType) {
+		List<ShoeOrder> listOfShoeOrders = shoeOrderRepository.findByDateOfOrderAndOrderType(orderDate, orderType);
 		return listOfShoeOrders;
 	}
 
